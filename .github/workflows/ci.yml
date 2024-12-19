@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  lint-format-test:
+  lint-test:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -18,7 +18,10 @@ jobs:
           node-version: '18.x'
 
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
       - name: Run linter
         run: npm run lint
+
+      - uses: 'hugoalh/scan-virus-ghaction@v0.20.1'
+
